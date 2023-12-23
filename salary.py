@@ -11,12 +11,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 load_dotenv()
 
-service = Service()
-option = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=service, options=option)
 
 def get_salary():
     """funkcija, lai saņemtu algu par pēdējo mēnesi"""
+
+    service = Service()
+    option = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=service, options=option)
 
     driver.get('https://hop.visma.lv/#!/login')
 
@@ -25,22 +26,22 @@ def get_salary():
     input_email = driver.find_element(By.ID, "username")
     input_password = driver.find_element(By.ID, "password_hidden")
 
-    email = os.environ.get("email")
+    email = os.environ.get("EMAIL")
     input_email.send_keys(email)
 
-    password = os.environ.get("password")
+    password = os.environ.get("PASSWORD")
     input_password.send_keys(password)
 
     input_email.submit()
 
 
-    salary_box =  WebDriverWait(driver,6).until(EC.presence_of_element_located((
+    salary_box =  WebDriverWait(driver,8).until(EC.presence_of_element_located((
         By.XPATH,
         "//h2[text()='Mana alga']"
     )))
     salary_box.click()
 
-    salary = WebDriverWait(driver,6).until(EC.presence_of_element_located((
+    salary = WebDriverWait(driver,8).until(EC.presence_of_element_located((
         By.XPATH,
         '//span[text()="Izmaksa:"]/following-sibling::span'
     )))
