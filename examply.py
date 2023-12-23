@@ -33,4 +33,8 @@ input_email.submit()
 
 salary_box =  WebDriverWait(driver,6).until(EC.presence_of_element_located((By.XPATH,"//h2[text()='Mana alga']")))
 salary_box.click()
+
+salary = WebDriverWait(driver,6).until(EC.presence_of_element_located((By.XPATH,'//span[text()="Izmaksa:"]/following-sibling::span')))
+salary = float(salary.text[4:].replace(",","."))
+print(salary)
 time.sleep(5)
