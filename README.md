@@ -23,7 +23,7 @@ Es vadu google sheets finanšu pārskatu par visiem saviem izdevumiem. Katru mē
 Pati loģika izskatās šādi:<br>
 1. Ejam uz hop.visma un lasām tur informāciju par manu algu <br>
 2. Pieprasām piekļuvi google, izmantojot OAuth, lai varētu strādāt ar google sheets<br>
-3. Izmantojam google sheets api un izveidojiet jaunu pārskatu un saglabājiet tajā nepieciešamos datus<br>
+3. Izmantojam google sheets api un izveidojam jaunu pārskatu un saglabājam tajā nepieciešamos datus<br>
 
 <code>.env.sample</code> - faila piemērs, ka es glābāju personas datus.<br>
 <code>salary.py</code> - tur ir visa loģika, kas saistīta ar algu informācijas iegūšanu. <br>
