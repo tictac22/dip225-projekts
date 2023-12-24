@@ -4,18 +4,17 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-
 from dotenv import load_dotenv
+from months import sheet_title
+from salary import get_salary
+
 load_dotenv()
 
-from salary import get_salary
-from months import months, current_month_number, current_year
-
-#salary = get_salary()
+salary = get_salary()
 
 def stop_program():
     sys.exit() 
+
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 SPREADSHEET_ID =  os.environ.get("SPREADSHEET_ID")
 
@@ -38,7 +37,6 @@ with open("token.json", "w",encoding="utf-8") as token:
 if not creds:
     sys.exit()
 
-sheet_title = str(months[current_month_number]) + " " + str(current_year)
 service = build("sheets", "v4", credentials=creds)
 request = {
     "requests": [
@@ -96,7 +94,7 @@ request = {
             "range": f"{sheet_title}!G14:I14",
             "majorDimension": "ROWS",
             "values": [
-                ["600",'=SUM(H7:K7)',"=G14-H14"]
+                [salary,'=SUM(H7:K7)',"=G14-H14"]
             ]
         },
     ]

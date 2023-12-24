@@ -17,3 +17,5 @@ months = {
 
 current_month_number = datetime.now().month
 current_year = datetime.now().year
+
+sheet_title = str(months[current_month_number]) + " " + str(current_year)
