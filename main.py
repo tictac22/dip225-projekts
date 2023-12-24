@@ -15,13 +15,16 @@ salary = get_salary()
 def stop_program():
     sys.exit() 
 
+if not salary:
+    stop_program()
+
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 SPREADSHEET_ID =  os.environ.get("SPREADSHEET_ID")
 
 creds = None
 if os.path.exists("token.json"):
     creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-# If there are no (valid) credentials available, let the user log in.
+
 if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
         creds.refresh(Request())
@@ -30,12 +33,12 @@ if not creds or not creds.valid:
             "credentials.json", SCOPES
         )
         creds = flow.run_local_server(port=0)
-# Save the credentials for the next run
+
 with open("token.json", "w",encoding="utf-8") as token:
     token.write(creds.to_json())
 
 if not creds:
-    sys.exit()
+    stop_program()
 
 service = build("sheets", "v4", credentials=creds)
 request = {
@@ -49,9 +52,7 @@ request = {
         }
     ]
 }
-
 service.spreadsheets().batchUpdate(body=request,spreadsheetId=SPREADSHEET_ID).execute()
-
 
 days = [ i for i in range(1,32)]
 titles = ["Pārtikas", "Transports", "Pakalpojumi", "Apģērbs"]
@@ -100,7 +101,6 @@ request = {
     ]
 }
 service.spreadsheets().values().batchUpdate(body=request,spreadsheetId=SPREADSHEET_ID).execute()
-
 
 row_data = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID,range="A4:Z4").execute()
 existing_values = row_data.get('values', [])
