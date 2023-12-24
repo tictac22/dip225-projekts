@@ -18,7 +18,6 @@ Es vadu google sheets finanšu pārskatu par visiem saviem izdevumiem. Katru mē
     - <code>googleapiclient.discovery</code> - bibliotēka, lai izveidot objektu mijiedarbībai ar google sheets api
 
 ## Izmantotie avoti:<br>
-<a href="https://www.geeksforgeeks.org/" target="_blank">heelloo</a><br>
 [Google sheets dokumentācija](https://developers.google.com/sheets/api/quickstart/python) - Es izmantoju Google dokumentāciju par to, kā strādāt ar viņu bibliotēku, lai mijiedarbotos ar google sheets
 ## Projeksta struktūra
 Pati loģika izskatās šādi:<br>
