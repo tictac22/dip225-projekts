@@ -18,7 +18,7 @@ Es vadu google sheets finanšu pārskatu par visiem saviem izdevumiem. Katru mē
     - <code>googleapiclient.discovery</code> - bibliotēka, lai izveidot objektu mijiedarbībai ar google sheet api
 
 ## Projeksta struktūra
-<code>.env.sample</code> - faila piemērs, ka es glābāju parsonas datus.<br>
+<code>.env.sample</code> - faila piemērs, ka es glābāju personas datus.<br>
 <code>salary.py</code> - tur ir visa loģika, kas saistīta ar algu informācijas iegūšanu. <br>
 <code>months.py</code> - fails, kurā es izveidoju nosaukumu savam jaunajam pārskatam, pamatojoties uz pašreizējo mēnesi un gadu<br>
 <code>main.py</code> - galvenais fails, kurā es piekļūstu savam google sheet dokumentam, izveidoju jaunu pārskatu un saglabāju datus
